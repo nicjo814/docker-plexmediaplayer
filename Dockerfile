@@ -33,6 +33,7 @@ libxcb-icccm4 \
 libxcb-sync1 \
 libxcb-render-util0 \
 p7zip-full \
+python \
 wget"
 
 # add repositories
