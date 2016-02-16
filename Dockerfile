@@ -5,7 +5,8 @@ ENV DISPLAY=":0"
 ENV XAUTHORITY="/tmp/.docker.xauth"
 
 # specify apt packages to install
-ENV BUILD_APTLIST="dos2unix \
+ENV BUILD_APTLIST="build-essential \
+dos2unix \
 libxcb1-dev \
 libx11-xcb-dev \
 libxcb-keysyms1-dev \
