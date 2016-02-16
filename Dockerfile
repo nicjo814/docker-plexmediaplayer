@@ -51,7 +51,8 @@ RUN cd / && \
 apt-get purge --remove $BUILD_APTLIST -y && \
 apt-get autoremove -y && \
 apt-get clean -y && \
-rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+rm -rf /var/lib/apt/lists/* /var/tmp/*
+# /tmp/* 
 
 # add some files 
 #ADD services/ /etc/service/
