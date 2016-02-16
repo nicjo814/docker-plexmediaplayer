@@ -11,7 +11,7 @@ libxcb-keysyms1-dev \
 libxcb-image0-dev \
 libxcb-shm0-dev \
 libxcb-icccm4-dev \
-libxcb-sync0-dev \
+libxcb-sync-dev \
 libxcb-xfixes0-dev \
 libxrender-dev \
 libxcb-shape0-dev \
@@ -27,7 +27,7 @@ libxcb-keysyms1 \
 libxcb-image0 \
 libxcb-shm0 \
 libxcb-icccm4 \
-libxcb-sync0 \
+libxcb-sync1 \
 libxcb-render-util0 \
 wget"
 
