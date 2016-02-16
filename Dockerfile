@@ -32,14 +32,14 @@ libxcb-render-util0 \
 wget"
 
 # add repositories
-RUN \
+# RUN \
 # plex home theater
 # add-apt-repository ppa:plexapp/plexht
 
 # install packages
 RUN apt-get update -q && \
 apt-get install \
-$APTLIST $BUILD_APTLIST -qy && \
+$APTLIST $BUILD_APTLIST -qy
 
 # build qt
 RUN mkdir -p /tmp && \
@@ -47,7 +47,7 @@ cd /tmp && \
 wget http://download.qt.io/development_releases/qt/5.6/5.6.0-beta/qt-opensource-linux-x64-5.6.0-beta.run
 
 # cleanup 
-cd / && \
+RUN cd / && \
 apt-get purge --remove $BUILD_APTLIST -y && \
 apt-get autoremove -y && \
 apt-get clean -y && \
