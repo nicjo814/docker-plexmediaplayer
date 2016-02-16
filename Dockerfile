@@ -5,7 +5,8 @@ ENV DISPLAY=":0"
 ENV XAUTHORITY="/tmp/.docker.xauth"
 
 # specify apt packages to install
-ENV BUILD_APTLIST="libxcb1-dev \
+ENV BUILD_APTLIST="dos2unix \
+libxcb1-dev \
 libx11-xcb-dev \
 libxcb-keysyms1-dev \
 libxcb-image0-dev \
@@ -21,14 +22,17 @@ libxcb-glx0-dev \
 libxcb-xinerama0-dev"
 
 ENV APTLIST="lshw \
+libfontconfig1 \
 libxcb1 \
 libx11-xcb1 \
+libx11-6 \
 libxcb-keysyms1 \
 libxcb-image0 \
 libxcb-shm0 \
 libxcb-icccm4 \
 libxcb-sync1 \
 libxcb-render-util0 \
+p7zip-full \
 wget"
 
 # add repositories
@@ -44,7 +48,13 @@ $APTLIST $BUILD_APTLIST -qy
 # build qt
 RUN mkdir -p /tmp && \
 cd /tmp && \
-wget http://download.qt.io/development_releases/qt/5.6/5.6.0-beta/qt-opensource-linux-x64-5.6.0-beta.run
+wget http://download.qt.io/development_releases/qt/5.6/5.6.0-beta/single/qt-everywhere-opensource-src-5.6.0-beta.7z && \
+7z x qt-everywhere-opensource-src-5.6.0-beta.7z && \
+cd qt-everywhere-opensource-src-5.6.0-beta && \
+dos2unix -k -o configure && \
+make
+
+
 
 # cleanup 
 RUN cd / && \
