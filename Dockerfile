@@ -7,11 +7,11 @@ ENV XAUTHORITY="/tmp/.docker.xauth"
 # specify apt packages to install
 ENV BUILD_APTLIST="dos2unix"
 
-ENV APTLIST="lshw \"
+ENV APTLIST="lshw \
 p7zip-full \
 wget"
 
-ENV QT_BUILD_APTLIST="  binutils bsdmainutils build-essential comerr-dev cpp cpp-4.8 dbus debhelper \
+ENV QT_BUILD_APTLIST="binutils bsdmainutils build-essential comerr-dev cpp cpp-4.8 dbus debhelper \
 dh-apparmor docbook docbook-to-man dpkg-dev fontconfig fontconfig-config \
 fonts-dejavu-core freetds-common freetds-dev g++ g++-4.8 gcc gcc-4.8 gdb \
 gettext gettext-base gir1.2-atk-1.0 gir1.2-atspi-2.0 gir1.2-freedesktop \
