@@ -7,12 +7,8 @@ ENV XAUTHORITY="/tmp/.docker.xauth"
 # specify apt packages to install
 ENV BUILD_APTLIST=""
 
-ENV APTLIST="lshw git build-essential \
-ninja-build wget cmake mesa-common-dev libxrandr-dev libsdl2-dev libcec-dev \
-libdvdread4 libjpeg-turbo8 libjack-jackd2-0 liblua5.2-0 libbluray1 libenca0 \
-libuchardet0 libcdio-paranoia1 libv4l-0 libsmbclient libcaca0 libguess1 \
-librubberband2 libfontconfig1 libxcomposite1 libxtst6 libicu52 libpython3.4 \
-libharfbuzz0b libvdpau1 libx264-142 libtheora0 dbus"
+ENV APTLIST="lshw git build-essential ninja-build cmake \
+mesa-common-dev libxrandr-dev libsdl2-dev libcec-dev dbus"
 
 #add repository
 RUN add-apt-repository -y ppa:george-edison55/cmake-3.x && \
