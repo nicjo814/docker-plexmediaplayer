@@ -26,21 +26,21 @@ cd plex-media-player && \
 mkdir build && \
 cd build
 
+ADD webview.qml /tmp/plex-media-player/src/ui/webview.qml
 ADD QtConfiguration.cmake /tmp/plex-media-player/CMakeModules/QtConfiguration.cmake
 
 RUN cd /tmp/plex-media-player/build && \
 cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DQTROOT=/usr/local/qt -DMPV_INCLUDE_DIR=/usr/local/include/mpv -DMPV_LIBRARY=/usr/local/lib/libmpv.so.1 -DCMAKE_INSTALL_PREFIX=output .. && \
 ninja && \
 cp ./src/plexmediaplayer /usr/local/bin && \
-cp ./src/pmphelper /usr/local/bin
-#&& \
+cp ./src/pmphelper /usr/local/bin && \
 
 # cleanup 
-#cd / && \
-#apt-get purge --remove $BUILD_APTLIST -y && \
-#apt-get autoremove -y && \
-#apt-get clean -y && \
-#rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/* 
+cd / && \
+apt-get purge --remove $BUILD_APTLIST -y && \
+apt-get autoremove -y && \
+apt-get clean -y && \
+rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/* 
 
 # add some files 
 ADD init/ /etc/my_init.d/
