@@ -12,5 +12,5 @@
 #if [ -z $GEOMETRY ]; then
 #	/usr/local/bin/plexmediaplayer -geometry $GEOMETRY
 #else
-/usr/local/bin/plexmediaplayer
+#/usr/local/bin/plexmediaplayer
 #fi
