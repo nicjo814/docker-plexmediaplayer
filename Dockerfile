@@ -8,7 +8,8 @@ ENV XAUTHORITY="/tmp/.docker.xauth"
 ENV BUILD_APTLIST=""
 
 ENV APTLIST="lshw git build-essential ninja-build cmake \
-mesa-common-dev libxrandr-dev libsdl2-dev libcec-dev dbus"
+mesa-common-dev libxrandr-dev libsdl2-dev libcec-dev dbus \
+dbus-x11 libxcb-xinerama0"
 
 #add repository
 RUN add-apt-repository -y ppa:george-edison55/cmake-3.x && \
