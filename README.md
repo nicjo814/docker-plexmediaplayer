@@ -1,7 +1,7 @@
 # docker-plexmediaplayer
 Plex Media Player Docker Image
 
-*IMPORTANT* This is not working 100% yet with lots of crashes in the UI. When playback of a movie starts though it runs fine.
+*IMPORTANT* This is not working 100% yet with lots of crashes in the UI. If the screen goes black (but the app is still runnning, it's possible to reload the app by pressing CTRL+SHIFT+R. When playback of a movie starts though it runs fine.
 
 ## Prerequisites
 * X server installed on host OS (must be with a window manger)
