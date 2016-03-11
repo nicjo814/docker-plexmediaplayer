@@ -27,7 +27,7 @@ cd plex-media-player && \
 mkdir build && \
 cd build
 
-#ADD QtConfiguration.cmake /tmp/plex-media-player/CMakeModules/QtConfiguration.cmake
+ADD QtConfiguration.cmake /tmp/plex-media-player/CMakeModules/QtConfiguration.cmake
 
 RUN cd /tmp/plex-media-player/build && \
 cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DQTROOT=/opt/qt56 -DMPV_INCLUDE_DIR=/usr/local/include/mpv -DMPV_LIBRARY=/usr/local/lib/libmpv.so.1 -DCMAKE_INSTALL_PREFIX=output .. && \
