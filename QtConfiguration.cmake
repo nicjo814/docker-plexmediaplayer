@@ -6,14 +6,14 @@ if(WIN32)
 endif(WIN32)
 
 if(NOT IS_DIRECTORY ${QTROOT})
-  #download_deps(
-#		"plexmediaplayer-qt"
-#		DIRECTORY dir
-#		DEPHASH QT_DEPS_HASH
- #   ARTIFACTNAME konvergo-qt
-  #  ${WINARCHSTR}
-   # DYLIB_SCRIPT_PATH ${PROJECT_SOURCE_DIR}/scripts/fix-install-names.py
-	#)
+  download_deps(
+		"plexmediaplayer-qt"
+		DIRECTORY dir
+		DEPHASH_VAR QT_DEPS_HASH
+    ARTIFACTNAME konvergo-qt
+    ${WINARCHSTR}
+    DYLIB_SCRIPT_PATH ${PROJECT_SOURCE_DIR}/scripts/fix-install-names.py
+	)
   set(QTROOT ${dir})
 endif()
 list(APPEND CMAKE_FIND_ROOT_PATH ${QTROOT})
@@ -32,7 +32,7 @@ set(REQUIRED_QT_VERSION "5.6.0")
 message(STATUS ${QTROOT})
 
 set(QTCONFIGROOT ${QTROOT}/lib/cmake/Qt5)
-set(components Core Network WebChannel Qml Quick Xml WebEngine)
+set(components Core Network WebChannel Qml Quick Xml WebEngine Widgets)
 
 if(OPENELEC)
   set(components ${components} DBus)
@@ -54,7 +54,7 @@ foreach(COMP ${components})
 
 	list(APPEND QT5_LIBRARIES ${${mod}_LIBRARIES})
 	list(APPEND QT5_CFLAGS ${${mod}_EXECUTABLE_COMPILE_FLAGS})
-	list(APPEND QT5_CFLAGS "-fPIC")
+	list(APPEND QT5_CFLAGS "-fPIC")	
 endforeach(COMP ${components})
 
 if(QT5_CFLAGS)
@@ -69,4 +69,3 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${QT5_CFLAGS}")
 
 set(CMAKE_REQUIRED_INCLUDES ${Qt5WebEngine_INCLUDE_DIRS};${Qt5WebEngine_PRIVATE_INCLUDE_DIRS})
 set(CMAKE_REQUIRED_LIBRARIES ${QT5_LIBRARIES})
-
