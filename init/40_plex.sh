@@ -1,4 +1,4 @@
 #!/bin/bash
 
 #Start PMP
-/sbin/setuser abc /usr/bin/plexmediaplayer &
+/usr/bin/plexmediaplayer &
