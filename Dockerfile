@@ -1,7 +1,7 @@
 FROM linuxserver/baseimage
 
 # set env variables
-ENV PATH="$PATH:/usr/local/qt5/bin"
+ENV PATH="$PATH:/opt/qt56/bin"
 ENV DISPLAY=":0"
 ENV XAUTHORITY="/tmp/.docker.xauth"
 
