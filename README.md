@@ -12,4 +12,3 @@ Plex Media Player Docker Image
 ```
 docker run -d --privileged -v /tmp:/tmp --name=plexmediaplayer nicjo814/docker-plexmediaplayer:ppa
 ```
-Manually start plexmediaplayer by entering the container ("docker exec -it plexmediaplayer bash") and then running the command "plexmediaplayer". If all is well you should now see the plexmediaplayer app starting within your host system window manager.
