@@ -8,7 +8,7 @@ ENV XAUTHORITY="/tmp/.docker.xauth"
 # specify apt packages to install
 ENV BUILD_APTLIST=""
 
-ENV APTLIST="plexmediaplayer"
+ENV APTLIST="plexmediaplayer lshw wget"
 
 #add repositories
 #qt56
