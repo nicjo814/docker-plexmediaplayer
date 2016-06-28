@@ -12,7 +12,7 @@ ENV APTLIST="plexmediaplayer lshw wget"
 
 #add repositories
 #qt56
-RUN add-apt-repository -y ppa:beineri/opt-qt56-trusty && \
+RUN add-apt-repository -y ppa:beineri/opt-qt561-trusty && \
 #plexmediaplayer
 add-apt-repository -y ppa:nicjo814/pmp && \
 
