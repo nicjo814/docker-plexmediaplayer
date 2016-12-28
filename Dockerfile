@@ -1,48 +1,53 @@
-FROM nicjo814/docker-mpv
+FROM nicjo814/xenial-x
 
-# set env variables
-ENV DISPLAY=":0"
-ENV XAUTHORITY="/tmp/.docker.xauth"
-
-# specify apt packages to install
-ENV BUILD_APTLIST=""
-
-ENV APTLIST="lshw git build-essential ninja-build cmake \
+ENV APTLIST="git build-essential ninja-build cmake \
 mesa-common-dev libxrandr-dev libsdl2-dev libcec-dev dbus \
-dbus-x11 libxcb-xinerama0"
+dbus-x11 libxcb-xinerama0 python-pip qt-latest \
+autoconf automake libtool libharfbuzz-dev libfreetype6-dev libfontconfig1-dev \
+libx11-dev libvdpau-dev libva-dev libegl1-mesa-dev yasm libasound2-dev \
+libpulse-dev libuchardet-dev zlib1g-dev libfribidi-dev libgnutls-dev \
+libgl1-mesa-dev"
 
-#add repository
-RUN add-apt-repository -y ppa:george-edison55/cmake-3.x && \
-
+RUN \
 # install packages
 apt-get update -q && \
+apt-get install software-properties-common -qy && \
+add-apt-repository -y ppa:beineri/opt-qt57-xenial && \
+apt-get update -q && \
 apt-get install \
-$APTLIST $BUILD_APTLIST -qy && \
+$APTLIST -qy && \
+
+# install conan
+pip install -U conan && \
+conan remote add plex https://conan.plex.tv && \
+
+# build mpv
+mkdir -p /tmp && \
+cd /tmp && \
+git clone https://github.com/mpv-player/mpv-build.git && \
+cd mpv-build && \
+echo --enable-libmpv-shared > mpv_options && \
+echo --disable-cplayer >> mpv_options && \
+./rebuild -j4 && \
+./install && \
+ldconfig && \
 
 # build plex media player
-mkdir -p /tmp && \
 cd /tmp && \
 git clone https://github.com/plexinc/plex-media-player.git && \
 cd plex-media-player && \
 mkdir build && \
-cd build
+cd build && \
+conan install .. && \
+cmake -DCMAKE_BUILD_TYPE=Debug -DQTROOT=/opt/qt57 -DCMAKE_INSTALL_PREFIX=/usr/local/ .. && \
+make -j4 && \
+make install && \
 
-#ADD QtConfiguration.cmake /tmp/plex-media-player/CMakeModules/QtConfiguration.cmake
-
-RUN cd /tmp/plex-media-player/build && \
-cmake -GNinja -DCMAKE_BUILD_TYPE=Debug -DQTROOT=/usr/local/qt5 -DMPV_INCLUDE_DIR=/usr/local/include/mpv -DMPV_LIBRARY=/usr/local/lib/libmpv.so.1 -DCMAKE_INSTALL_PREFIX=output .. && \
-ninja && \
-cp ./src/plexmediaplayer /usr/local/bin && \
-cp ./src/pmphelper /usr/local/bin && \
-
-# cleanup 
+# cleanup
 cd / && \
-apt-get purge --remove $BUILD_APTLIST -y && \
 apt-get autoremove -y && \
 apt-get clean -y && \
-rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/* 
+rm -rf /var/lib/apt/lists/* /var/tmp/* /tmp/*
 
-# add some files 
-ADD init/ /etc/my_init.d/
-RUN chmod -v +x /etc/my_init.d/*.sh
-
+# add some files
+COPY root/ /
