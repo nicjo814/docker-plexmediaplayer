@@ -11,5 +11,5 @@ Plex Media Player Docker Image
 
 ## Usage
 ```
-docker run -d --privileged -v /tmp:/tmp -e GFX_DRIVER=<driver> --name=plexmediaplayer nicjo814/plexmediaplayer
+docker run -d --privileged -v /tmp:/tmp -e GFX_DRIVER=<driver> --name=plexmediaplayer nicjo814/docker-plexmediaplayer
 ```
