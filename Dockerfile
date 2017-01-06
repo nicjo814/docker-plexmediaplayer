@@ -1,4 +1,4 @@
-FROM nicjo814/xenial-x
+FROM nicjo814/docker-baseimage-xenial-x
 
 ENV APTLIST="git build-essential ninja-build cmake \
 mesa-common-dev libxrandr-dev libsdl2-dev libcec-dev dbus \
