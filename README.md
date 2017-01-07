@@ -6,7 +6,7 @@ Plex Media Player Docker Image
 * Allow connections to the X server (could be done by adding "xhost +" to the .xsessionrc file of the user running the X server on the host)
 
 ## Supported GFX drivers
-* nvidia, nouveau, i810, i815, i830, i845, i855, i865, i915, i945, i965
+* nvidia, nouveau, radeon, i810, i815, i830, i845, i855, i865, i915, i945, i965
 
 
 ## Usage
