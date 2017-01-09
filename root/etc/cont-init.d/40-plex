@@ -1,2 +1,7 @@
 #!/usr/bin/with-contenv bash
-plexmediaplayer > /dev/null 2>&1
+
+# Set bash as shell for abc user
+sed -E -i 's/(abc\:x\:[0-9]+\:([0-9]+)\:\:\/config\:)\/bin\/false/\1\/bin\/bash/g' /etc/passwd
+
+# Run plexmediaplayer as abc user to avoid segfault due to chromium running as root
+su -c 'plexmediaplayer --scale-factor=1' abc
