@@ -1,5 +1,8 @@
 #!/usr/bin/with-contenv bash
 
+# Remount /dev/shm to avoid chromium running out of diskpace which results in crash
+mount -o remount,size=1G /dev/shm
+
 # Make abc user a member of the audio group
 sed -E -i 's/(audio\:x\:[0-9]+\:).*/\1abc/g' /etc/group
 

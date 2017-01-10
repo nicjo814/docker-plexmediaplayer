@@ -12,7 +12,7 @@ RUN \
 # install packages
 apt-get update -q && \
 apt-get install software-properties-common -qy && \
-add-apt-repository -y ppa:beineri/opt-qt57-xenial && \
+add-apt-repository -y ppa:beineri/opt-qt571-xenial && \
 apt-get update -q && \
 apt-get install \
 $APTLIST -qy && \
