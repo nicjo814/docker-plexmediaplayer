@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+
+# Run plexmediaplayer as abc user to avoid segfault due to chromium running as root
+echo "Starting Plex Media Player"
+su -c 'plexmediaplayer --scale-factor=1' abc 2> /dev/null
