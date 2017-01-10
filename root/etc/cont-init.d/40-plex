@@ -13,4 +13,4 @@ sed -E -i 's/(video\:x\:[0-9]+\:).*/\1abc/g' /etc/group
 sed -E -i 's/(abc\:x\:[0-9]+\:([0-9]+)\:\:\/config\:)\/bin\/false/\1\/bin\/bash/g' /etc/passwd
 
 # Run plexmediaplayer as abc user to avoid segfault due to chromium running as root
-su -c 'plexmediaplayer --scale-factor=1' abc
+su -c 'plexmediaplayer --scale-factor=1' abc 2> /dev/null
