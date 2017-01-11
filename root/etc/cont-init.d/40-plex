@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bash
 
 # Remount /dev/shm to avoid chromium running out of diskpace which results in crash
-mount -o remount,size=1G /dev/shm
+mount -o remount,size=256M /dev/shm
 
 # Set bash as shell for abc user
 sed -E -i 's/(abc\:x\:[0-9]+\:([0-9]+)\:\:\/config\:)\/bin\/false/\1\/bin\/bash/g' /etc/passwd
